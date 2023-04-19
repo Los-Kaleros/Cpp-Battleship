@@ -32,24 +32,26 @@ void clear_boards(){
 }
 
 void show_player1_board(){
-    cout << "-------------------------------------------------------- Hrac 1 plocha --------------------------------------------------------" << endl;
+    cout << setw(30)<< "Hrac 1 plocha" << endl;
     cout << endl;
     for(int i=0; i < rows; i++)
     {
+        cout << setw(30);
         for(int j=0; j < cols; j++)
         {
             cout << player1_board[i][j] << " ";
         }
         cout << endl;
     }
-    cout << endl;
+
 }
 
 void show_player1_attack_board(){
-    cout << "-------------------------------------------------------- Hrac 1 radar --------------------------------------------------------" << endl;
+    cout << setw(5) << "Hrac 1 radar" << endl;
     cout << endl;
     for(int i=0; i < rows; i++)
     {
+        cout << setw(5);
         for(int j=0; j < cols; j++)
         {
             cout << player1_attack_board[i][j] << " ";
@@ -60,24 +62,26 @@ void show_player1_attack_board(){
 }
 
 void show_player2_board(){
-    cout << "-------------------------------------------------------- Hrac 2 plocha --------------------------------------------------------" << endl;
+    cout << setw(30) <<"Hrac 2 plocha" << endl;
     cout << endl;
     for(int i=0; i < rows; i++)
     {
+        cout << setw(30);
         for(int j=0; j < cols; j++)
         {
             cout << player2_board[i][j] << " ";
         }
         cout << endl;
     }
-    cout << endl;
+
 }
 
 void show_player2_attack_board(){
-    cout << "-------------------------------------------------------- Hrac 2 radar --------------------------------------------------------" << endl;
+    cout << setw(5) <<"Hrac 2 radar" << endl;
     cout << endl;
     for(int i=0; i < rows; i++)
-    {
+    {   
+        cout << setw(5);
         for(int j=0; j < cols; j++)
         {
             cout << player2_attack_board[i][j] << " ";
@@ -88,23 +92,21 @@ void show_player2_attack_board(){
 }
 
 void player_place_boats(){
-    system("cls");
     system("clear");
     int pos1,pos2;
     char prompt;
     cout << endl;
-    cout << "Na ploche sa zobrazuju 0 na pozicii kde lode niesu 1 kde lode su 2 kde su potopene lode a 3 je miesto kde si strielal avsak nic netrafil" << endl;
-    cout << endl;
-    cout << "-------------------------------------------------------- Hrac 1 poklada lodky --------------------------------------------------------" << endl;
-    cout << endl;
     for(int i=0; i < MaxShips; i++)
     {
+        cout << "Na ploche sa zobrazuju 0 na pozicii kde lode niesu 1 kde lode su 2 kde su potopene lode a 3 je miesto kde si strielal avsak nic netrafil" << endl;
+        cout << endl;
+        cout << "-------------------------------------------------------- Hrac 1 poklada lodky --------------------------------------------------------" << endl;
         show_player1_board();
-        cout << "Zadaj suradnice pre lodku " << i+1 << " (najprv riadok potom stlpec, kladne cisla 0-5 napr. 0 0 je prve policko): ";
+        cout << "Zadaj suradnice pre lodku " << i+1 << " (najprv riadok potom stlpec, kladne cisla 0-"<< rows-1 << " napr. 0 0 je prve policko): ";
         cin >> pos1 >> pos2;
         while(1) 
         {
-            if((pos1 < 0) || (pos2 < 0) || (pos1 > 5) || (pos2 > 5))
+            if((pos1 < 0) || (pos2 < 0) || (pos1 > (rows-1)) || (pos2 > (rows-1)))
             {
                 cout << "Zadal si zle suradnice!" << endl;
                 cout << "Zadaj ich znovu: ";
@@ -122,30 +124,27 @@ void player_place_boats(){
                 break;
             }
         }
-        system("cls");
+
         system("clear");
     }
     cout << endl;
 }
 
 void player2_place_boats(){
-    system("cls");
     system("clear");
     int pos1,pos2;
     char prompt;
     cout << endl;
-    cout << "Na ploche sa zobrazuju 0 na pozicii kde lode niesu 1 kde lode su 2 kde su potopene lode a 3 je miesto kde si strielal avsak nic netrafil" << endl;
-    cout << endl;
-    cout << "-------------------------------------------------------- Hrac 2 poklada lodky --------------------------------------------------------" << endl;
-    cout << endl;
     for(int i=0; i < MaxShips; i++)
-    {
+    {   cout << "Na ploche sa zobrazuju 0 na pozicii kde lode niesu 1 kde lode su 2 kde su potopene lode a 3 je miesto kde si strielal avsak nic netrafil" << endl;
+        cout << endl;
+        cout << "-------------------------------------------------------- Hrac 2 poklada lodky --------------------------------------------------------" << endl;
         show_player2_board();
-        cout << "Zadaj suradnice pre lodku " << i+1 << " (najprv riadok potom stlpec, kladne cisla 0-5 napr. 0 0 je prve policko): ";
+        cout << "Zadaj suradnice pre lodku " << i+1 << " (najprv riadok potom stlpec, kladne cisla 0-" << rows-1 << "napr. 0 0 je prve policko): ";
         cin >> pos1 >> pos2;
         while(1) 
         {
-            if((pos1 < 0) || (pos2 < 0) || (pos1 > 5) || (pos2 > 5))
+            if((pos1 < 0) || (pos2 < 0) || (pos1 > (rows-1)) || (pos2 > (rows-1)))
             {
                 cout << "Zadal si zle suradnice!" << endl;
                 cout << "Zadaj ich znovu: ";
@@ -163,18 +162,18 @@ void player2_place_boats(){
                 break;
             }
         }
-        system("cls");
+
         system("clear");
     }
     cout << endl;
 }
 
 void show_start_screen(){
-    cout << setw(30)<<"Vitaj v mojej simple battleship hre!" << endl;
+    cout << setw(30)<<"Vitaj v mojej battleship hre!" << endl;
     cout << "---------------------------------------------------------------" << endl;
     cout << setw(30)<<"Vyber si herny mod:" << endl;
     cout << setw(30)<< "1. Hrac vs PC" << endl;
-    cout << setw(30)<< "2. Hrac vs Hrac" << endl;
+    cout << setw(32)<< "2. Hrac vs Hrac" << endl;
 }
 
 
@@ -209,11 +208,11 @@ int count_ships(int board[rows][cols]){
 
 void player1_shoot(){
     int pos1,pos2;
-    cout << "Zadaj suradnice na ktore chces strielat (najprv riadok potom stlpec, kladne cisla 0-5 napr. 0 0 je prve policko): ";
+    cout << "Zadaj suradnice na ktore chces strielat (najprv riadok potom stlpec, kladne cisla 0-" << rows-1 << "napr. 0 0 je prve policko): ";
     cin >> pos1 >> pos2;
     while(1) 
     {
-        if((pos1 < 0) || (pos2 < 0) || (pos1 > 5) || (pos2 > 5))
+        if((pos1 < 0) || (pos2 < 0) || (pos1 > (rows-1)) || (pos2 > (rows-1)))
         {
             cout << "Zadal si zle suradnice!" << endl;
             cout << "Zadaj ich znovu: ";
@@ -246,11 +245,11 @@ void player1_shoot(){
 
 void player2_shoot(){
     int pos1,pos2;
-    cout << "Zadaj suradnice na ktore chces strielat (najprv riadok potom stlpec, kladne cisla 0-5 napr. 0 0 je prve policko): ";
+    cout << "Zadaj suradnice na ktore chces strielat (najprv riadok potom stlpec, kladne cisla 0-" << rows-1 << "napr. 0 0 je prve policko): ";
     cin >> pos1 >> pos2;
     while(1) 
     {
-        if((pos1 < 0) || (pos2 < 0) || (pos1 > 5) || (pos2 > 5))
+        if((pos1 < 0) || (pos2 < 0) || (pos1 > (rows-1)) || (pos2 > (rows-1)))
         {
             cout << "Zadal si zle suradnice!" << endl;
             cout << "Zadaj ich znovu: ";
@@ -281,51 +280,116 @@ void player2_shoot(){
     cout << endl;
 }
 
+
+void pc_shoot(){
+    int pos1,pos2;
+    pos1 = rand() % rows;
+    pos2 = rand() % cols;
+    while(1) 
+    {
+        if(player1_attack_board[pos1][pos2] == 3)
+        {
+            pos1 = rand() % rows;
+            pos2 = rand() % cols;
+        }
+        else
+        {
+            player1_attack_board[pos1][pos2] = 3;
+            break;
+        }
+    }
+    if(player1_board[pos1][pos2] == 1)
+    {
+        player1_board[pos1][pos2] = 2;
+        player1_attack_board[pos1][pos2] = 2;
+        cout << "PC potopil lod!" << endl;
+    }
+    else
+    {
+        cout << "PC nic netrafil!" << endl;
+    }
+    cout << endl;
+}
+
 void player_vs_pc(){
-    system("cls");
     system("clear");
-    cout << "Hrac vs PC" << endl;
+    cout << setw(30) << "Hrac vs PC" << endl;
+    cout << "---------------------------------------------------------------" << endl;
     clear_boards();
     pc_place_ships();
     player_place_boats();
     show_player1_board();
     show_player1_attack_board();
-
-
-}
-
-void player_vs_player(){
-    system("color 0A");
-    system("cls");
-    system("clear");
-    cout << "Hrac vs Hrac" << endl;
-    clear_boards();
-    player_place_boats();
-    show_player1_board();
-    system("cls");
-    system("clear");
-    player2_place_boats();
-    show_player2_board();
-    system("cls");
-    system("clear");
     int player1_ships = count_ships(player1_board);
     int player2_ships = count_ships(player2_board);
     int turn = 1;
     while (player1_ships > 0 && player2_ships > 0)
-    {
+    {   
+        cout << "pocet lodiek hraca 1: " << player1_ships;
+        cout << setw(5) <<"pocet lodiek PC: " << player2_ships << endl;
         if (turn == 1)
         {
-            system("cls");
             system("clear");
             show_player1_board();
             show_player1_attack_board();
             player1_shoot();
             turn = 2;
-
-            
         }
         else if (turn == 2)
         {
+            pc_shoot();
+            turn = 1;
+        }
+    }
+    if(player1_ships == 0)
+    {
+        cout << "Vyhral hrac 2!" << endl;
+    }
+    else if(player2_ships == 0)
+    {
+        cout << "Vyhral hrac 1!" << endl;
+    }
+    cout << "chces hrat znovu? (y/n): ";
+    char answer;
+    cin >> answer;
+    if(answer == 'y')
+    {
+        player_vs_pc();
+    }
+    else
+    {
+        exit(0);
+    }
+}
+
+void player_vs_player(){
+    system("clear");
+    cout << "Hrac vs Hrac" << endl;
+    clear_boards();
+    player_place_boats();
+    show_player1_board();
+    system("clear");
+    player2_place_boats();
+    show_player2_board();
+    system("clear");
+    int player1_ships = count_ships(player1_board);
+    int player2_ships = count_ships(player2_board);
+    int turn = 1;
+    while (player1_ships > 0 && player2_ships > 0)
+    {   
+        cout << "pocet lodiek hraca 1: " << player1_ships;
+        cout << setw(5) <<"pocet lodiek hraca 2: " << player2_ships << endl;
+        if (turn == 1)
+        {
+            system("clear");
+            show_player1_board();
+            show_player1_attack_board();
+            player1_shoot();
+            turn = 2; 
+        }
+        else if (turn == 2)
+        {   
+            system("clear");
             show_player2_board();
             show_player2_attack_board();
             player2_shoot();
@@ -354,11 +418,9 @@ void player_vs_player(){
 
 }
 
-
-
 void choose_mode(){
     int mode;
-    cout << "Zadaj cislo modu: ";
+    cout << setw(35)<<"Zadaj cislo modu: ";
     cin >> mode;
     while(1)
     {
@@ -380,16 +442,10 @@ void choose_mode(){
     }
 }
 
-
-
 int main()
 {
     srand(time(NULL));
     show_start_screen();
     choose_mode();
-    player_vs_pc();
-
-
-    
     return 0;
 }
