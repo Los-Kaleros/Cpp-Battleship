@@ -16,8 +16,6 @@ int player1_attack_board[rows][cols];
 int player2_board[rows][cols];
 int player2_attack_board[rows][cols];
 
-
-
 void clear_boards(){
     for(int i=0; i < rows; i++)
     {
@@ -168,7 +166,6 @@ void show_start_screen(){
     cout << setw(32)<< "2. Hrac vs Hrac" << endl;
 }
 
-
 void pc_place_ships(){
     int s = 0;
     while(s < MaxShips)
@@ -253,19 +250,19 @@ void player2_shoot(){
             cout << "Zadaj ich znovu: ";
             cin >> pos1 >> pos2;
         }
-        else if(player1_attack_board[pos1][pos2] == 3)
+        else if(player1_board[pos1][pos2] == 3)
         {
             cout << "Na tychto suradniciach si uz strielal!" << endl;
             cout << "Zadaj ich znovu: ";
             cin >> pos1 >> pos2;
         }
-        else if(player1_attack_board[pos1][pos2] == 2)
+        else if(player1_board[pos1][pos2] == 2)
         {
             cout << "Na tychto suradniciach si uz strielal a potopil si lodku!" << endl;
             cout << "Zadaj ich znovu: ";
             cin >> pos1 >> pos2;
         }
-        else if(player1_attack_board[pos1][pos2] == 1)
+        else if(player1_board[pos1][pos2] == 1)
         {
             player1_board[pos1][pos2] = 2;
             player2_attack_board[pos1][pos2] = 2;
@@ -390,26 +387,11 @@ void player_vs_player(){
     int turn = 1;
     while (player1_ships > 0 && player2_ships > 0)
     {   
+        system("clear");
         int player1_ships = count_ships(player1_board);
         int player2_ships = count_ships(player2_board);
         cout << "pocet lodiek hraca 1: " << player1_ships;
         cout << setw(5) <<"pocet lodiek hraca 2: " << player2_ships << endl;
-        if (turn == 1)
-        {
-            system("clear");
-            show_player1_board();
-            show_player1_attack_board();
-            player1_shoot();
-            turn = 2; 
-        }
-        else if (turn == 2)
-        {   
-            system("clear");
-            show_player2_board();
-            show_player2_attack_board();
-            player2_shoot();
-            turn = 1;
-        }
         if(player1_ships == 0)
         {
             cout << "Vyhral hrac 2!" << endl;
@@ -422,6 +404,7 @@ void player_vs_player(){
             }
             else
             {
+                cout << "dakujem za hru" << endl;
                 exit(0);
             }
         }
@@ -437,13 +420,26 @@ void player_vs_player(){
             }
             else
             {
+                cout << "dakujem za hru" << endl;
                 exit(0);
             }
         }
-
+        
+        if (turn == 1)
+        {
+            show_player1_board();
+            show_player1_attack_board();
+            player1_shoot();
+            turn = 2; 
+        }
+        else if (turn == 2)
+        {   
+            show_player2_board();
+            show_player2_attack_board();
+            player2_shoot();
+            turn = 1;
+        }
     }
-
-
 }
 
 void choose_mode(){
