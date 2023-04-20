@@ -484,3 +484,7 @@ int main()
     choose_mode();
     return 0;
 }
+
+
+
+//chces pokracovat hej ci ni na pvPC neni ok
