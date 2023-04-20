@@ -5,9 +5,9 @@
 #include <iomanip>
 using namespace std;
 
-const int rows = 3;
-const int cols = 3;
-int MaxShips = 3;
+const int rows = 7;
+const int cols = 7;
+int MaxShips = 6;
 
 int matrix[rows][cols];
 int player1_board[rows][cols];
@@ -159,11 +159,22 @@ void player2_place_boats(){
 }
 
 void show_start_screen(){
-    cout << setw(30)<<"Vitaj v mojej battleship hre!" << endl;
+    system("clear");
+    cout<<setw(30)<<" _______  _______  _______  _______  ___      _______   _______  __   __  ___  _______  _______ " << endl;
+    cout<<setw(30)<<"|  _    ||   _   ||       ||       ||   |    |       | |       ||  | |  ||   ||       ||       |" << endl;
+    cout<<setw(30)<<"| |_|   ||  |_|  ||_     _||_     _||   |    |    ___| |  _____||  |_|  ||   ||    _  ||  _____|" << endl;
+    cout<<setw(30)<<"|       ||       |  |   |    |   |  |   |    |   |___  | |_____ |       ||   ||   |_| || |_____ " << endl;
+    cout<<setw(30)<<"|  _   | |       |  |   |    |   |  |   |___ |    ___| |_____  ||       ||   ||    ___||_____  |" << endl;
+    cout<<setw(30)<<"| |_|   ||   _   |  |   |    |   |  |       ||   |___  |_____| ||   _   ||   ||   |     _____| |" << endl;
+    cout<<setw(30)<<"|_______||__| |__|  |___|    |___|  |_______||_______| |_______||__| |__||___||___|    |_______|" << endl;
+    cout << endl;
+
+
+    cout << setw(40)<<"Vitaj v mojej battleship hre!" << endl;
     cout << "---------------------------------------------------------------" << endl;
-    cout << setw(30)<<"Vyber si herny mod:" << endl;
+    cout << setw(35)<<"Vyber si herny mod:" << endl;
     cout << setw(30)<< "1. Hrac vs PC" << endl;
-    cout << setw(32)<< "2. Hrac vs Hrac" << endl;
+    cout << setw(32)<< "2. Hrac vs Hrac" << endl<<endl;
 }
 
 void pc_place_ships(){
@@ -301,14 +312,14 @@ void pc_shoot(){
         {
             player1_board[pos1][pos2] = 2;
             player2_attack_board[pos1][pos2] = 2;
-            cout << "PC potopil lod" << endl;
+            cout << "PC potopil lod" << endl<<endl;
             break;
         }
         else
         {
             player1_board[pos1][pos2] = 3;
             player2_attack_board[pos1][pos2] = 3;
-            cout << "PC sa netrafil" << endl;
+            cout << "PC sa netrafil" << endl<<endl;
             break;
         }
     }
@@ -329,7 +340,7 @@ void player_vs_pc(){
         int player1_ships = count_ships(player1_board);
         int player2_ships = count_ships(player2_board);
         cout << "pocet lodiek hraca 1: " << player1_ships;
-        cout << setw(5) <<"pocet lodiek PC: " << player2_ships << endl;
+        cout << setw(10) <<" pocet lodiek PC: " << player2_ships << endl<< endl;
         if (turn == 1)
         {
             show_player1_board();
@@ -391,7 +402,7 @@ void player_vs_player(){
         int player1_ships = count_ships(player1_board);
         int player2_ships = count_ships(player2_board);
         cout << "pocet lodiek hraca 1: " << player1_ships;
-        cout << setw(5) <<"pocet lodiek hraca 2: " << player2_ships << endl;
+        cout << setw(10) <<" pocet lodiek hraca 2: " << player2_ships << endl<< endl;
         if(player1_ships == 0)
         {
             cout << "Vyhral hrac 2!" << endl;
