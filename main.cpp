@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <iomanip>
+#include <unistd.h>
 using namespace std;
 
 const int rows = 7;
@@ -112,6 +113,17 @@ void player_place_boats(){
                 cout << "Zadaj ich znovu: ";
                 cin >> pos1 >> pos2;
             }
+            // else if(!isdigit(pos1)||!isdigit(pos2)){
+                
+
+            //     int pos1, pos2 = 0;
+            //     cout << endl;
+            //     cout << "Zadal si zle suradnice!" << endl;
+            //     cout << "Zadaj ich znova"<< endl;
+            //     cout << pos1 <<pos2;
+            //     cin >> pos1 >> pos2;
+            //     continue;
+            // }
             else
             {
                 player1_board[pos1][pos2] = 1;
